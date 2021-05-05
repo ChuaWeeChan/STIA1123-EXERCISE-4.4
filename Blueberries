@@ -1,0 +1,93 @@
+package Testing;
+
+/**
+ *
+ * @author CHUA WEE CHAN 271948
+ */
+public class Blueberries extends Fruit {
+    protected int quantity;
+    protected double price, weight;
+    char vitamin;
+    protected String colour, origin;
+   
+    public Blueberries(String n,double p,int q, double w, String c, char v, String o){ //constructor sub class with argument
+        super(n);
+        price = p;
+        quantity = q;
+        weight = w;
+        colour = c;
+        vitamin = v;
+        origin = o;
+        
+        if (quantity <= 10){
+            totalPrice();
+            System.out.println("Total price for quantity less than 10 : RM "+totalPrice());
+        }
+        else if ((quantity > 10) && (quantity <=30)){
+            double pp = 9.5;
+            totalPrice(pp);
+            System.out.println("Total price for quantity less than 50 : RM "+totalPrice(pp));
+        }
+        else {
+            double ppp = 9;
+            double disc = 0.1;
+            totalPrice(ppp,disc);
+            System.out.println("Total price for quantity more than 50 : RM "+totalPrice(ppp,disc)); 
+        }
+    }
+    
+    public double totalPrice(){ //overloading method with no argument
+        double totalPrice = quantity*price;
+        return totalPrice;
+    }
+   
+    public double totalPrice(double pp){ //overloading method with 1 argument
+        double totalPrice = pp*quantity;
+        return totalPrice;
+    }
+    
+    public double totalPrice(double ppp, double disc){ //overloading method with 2 argument
+        double totalDiscount = ((quantity*ppp)*disc);
+        double totalPrice = (quantity*ppp)-totalDiscount;
+        return totalPrice;
+    }
+    
+    public double Price(){
+        return price;
+    }
+    
+    public int Quantity(){
+        return quantity;
+    }
+    
+    public double Weight(){
+        return weight;
+    }
+    
+    public String Colour(){
+        return colour;
+    }
+    
+    public char Vitamin(){
+        return vitamin;
+    }
+    
+    public String Origin(){
+        return origin;
+    }
+    
+    public double totalWeight(){
+        double totalWeight = (quantity*weight);
+        return totalWeight;
+    }
+    
+    public String toString(){ //overriding method
+        return super.toString()
+                +"\nQuantity\t: "+quantity+"units"
+                +"\nTotal Weight\t："+totalWeight()+"gm."
+                +"\nColour\t\t: "+Colour()
+                +"\nVitamin\t\t: Vitamin "+Vitamin()
+                +"\nOrigin\t\t: "+Origin();
+    }
+}
+
