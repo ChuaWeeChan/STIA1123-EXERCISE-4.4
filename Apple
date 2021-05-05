@@ -1,0 +1,57 @@
+package Testing;
+
+/**
+ *
+ * @author CHUA WEE CHAN 271948
+ */
+public class Apple extends Fruit{ //sub class of fruit
+    protected double price;
+    protected int quantity;
+    
+    public Apple(String n, double p, int q){ //constructor sub class with 3 argument
+        super(n);
+        price = p;
+        quantity = q;
+        
+        if (quantity <= 10){
+            totalPrice();
+            System.out.println("Total price for quantity less than 10 : RM "+totalPrice());
+        }
+        else if ((quantity > 10) && (quantity <=50)){
+            double pp = 2.5;
+            totalPrice(pp);
+            System.out.println("Total price for quantity less than 50 : RM "+totalPrice(pp));
+        }
+        else {
+            double ppp = 2;
+            double disc = 0.1;
+            totalPrice(ppp,disc);
+            System.out.println("Total price for quantity more than 50 : RM "+totalPrice(ppp,disc)); 
+        }
+    }
+    
+    public String printInfo(){
+        return "\nApple is a Fruit";
+    }
+    
+    public double totalPrice(){ //overloading method with no argument
+        double totalPrice = quantity*price;
+        return totalPrice;
+    }
+   
+    public double totalPrice(double pp){ //overloading method with 1 argument
+        double totalPrice = pp*quantity;
+        return totalPrice;
+    }
+    
+    public double totalPrice(double ppp, double disc){ //overloading method with 2 argument
+        double totalDiscount = ((quantity*ppp)*disc);
+        double totalPrice = (quantity*ppp)-totalDiscount;
+        return totalPrice;
+    }
+    
+    public String toString(){ //overriding method
+        return super.toString()
+                +"\nQuantity\t: "+quantity+"units";
+    }
+}
